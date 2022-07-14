@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import {NarutoIMG, Quotes} from '../components';
+import {getQuote} from '../services';
+import jutsoSound from '../sounds/jutso.mp3';
 
+const audio  = new Audio(jutsoSound);
 
-const App = () => {
+export default function App() {
+
+    const [quoteState,setQuoteState] = useState({
+        quote: 'ok',
+        speaker: 'Speaker'
+    });
+    
+    const onUpdate = async () => {
+        const quote = await getQuote();
+        audio.play();
+        setQuoteState(quote);
+    };
 
     return (
         <Content>
-            <Quotes quote={"ok"} speaker={"Speaker"}/>
+            <Quotes {...quoteState} onUpdate={onUpdate}/>
             <NarutoIMG/>
         </Content>
     );
@@ -20,5 +34,3 @@ const Content = styled.div`
     justify-content: center;
     align-items: center;
 `;
-
-export default App;

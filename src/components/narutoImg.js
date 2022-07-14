@@ -5,7 +5,7 @@ import NarutoPng from "../images/naruto.png";
 
 export const NarutoIMG = () => {
     return(
-        <NarutoTag src={NarutoPng}></NarutoTag>
+        <NarutoTag src={NarutoPng} alt="Naruto with a kunai"></NarutoTag>
     );
     
 }

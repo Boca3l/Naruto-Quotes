@@ -3,18 +3,17 @@ import {Button} from "./button";
 import {Quote} from "./quote";
 import {string} from 'prop-types';
 
-export const Quotes = ({quote,speaker}) => {
+export const Quotes = ({quote,speaker,onUpdate}) => {
     return(
         <div>
             <Quote quote={quote} speaker={speaker} />
-            <Button onClick={() => mostraAlerta('Alerta Funciona')}>Quote No Jutsu</Button>
+            <Button onClick={onUpdate}>Quote No Jutsu</Button>
         </div>
     );
 }
 
 Quotes.propTypes = {
     quote: string,
-  
     speaker: string
 };
 
